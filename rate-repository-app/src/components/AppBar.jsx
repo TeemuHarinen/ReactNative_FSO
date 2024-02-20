@@ -1,11 +1,13 @@
-import { View, StyleSheet, Pressable } from 'react-native';
+import { View, StyleSheet, Pressable, ScrollView } from 'react-native';
+import { useNavigate } from 'react-router-native';
+
 import Text from './Text';
 import Constants from 'expo-constants';
 
 const styles = StyleSheet.create({
   container: {
     paddingTop: Constants.statusBarHeight,
-    backgroundColor: 'rgb(203, 195, 227)',
+    backgroundColor: '#1c89b4',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-start',
@@ -22,17 +24,28 @@ const styles = StyleSheet.create({
   // ...
 });
 
+
+
 const AppBar = () => {
 
-  const onPressFunction = () => {
-    console.log('Repositories');
-  }
+  const navigate = useNavigate();
+
+  const onPressFunction = (path) => () => {
+    console.log('Pressed');
+    navigate(path);
+  };
 
   return <>
   <View style={styles.container}>
-    <Pressable onPress={onPressFunction}>
-      <Text style={styles.flexItem}>Repositories</Text>
-    </Pressable>
+    <ScrollView horizontal>
+      <Pressable onPress={onPressFunction('/signin')}>
+        <Text style={styles.flexItem}>SignIn</Text>
+      </Pressable>
+      <Pressable onPress={onPressFunction('/')}>
+        <Text style={styles.flexItem}>Repositories</Text>
+      </Pressable>
+      
+    </ScrollView>
   </View>
   </>
 };

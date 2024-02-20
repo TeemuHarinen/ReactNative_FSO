@@ -31,7 +31,7 @@ const cardHeaderStyles = StyleSheet.create({
   },
 });
 
-const cardFooterStyles = StyleSheet.create({
+const cardInfoStyles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     flexGrow: 1,
@@ -48,6 +48,7 @@ const cardFooterStyles = StyleSheet.create({
 });
 
 const RepositoryItem = ({ item }) => {
+  
   const formatCount = (count) => {
     if (count >= 1000) {
       return `${(count / 1000).toFixed(1)}k`;
@@ -70,20 +71,20 @@ const RepositoryItem = ({ item }) => {
         <Text style={cardHeaderStyles.text} color="primary"> {item.language}</Text>
       </View>
     </View>
-      <View style={cardFooterStyles.container}>
-        <View style={cardFooterStyles.actionTouchable}>
+      <View style={cardInfoStyles.container}>
+        <View style={cardInfoStyles.actionTouchable}>
           <Text fontWeight="bold">{formatCount(item.stargazersCount)}</Text>
           <Text>Stars</Text>
         </View>
-        <View style={cardFooterStyles.actionTouchable}>
+        <View style={cardInfoStyles.actionTouchable}>
           <Text fontWeight="bold">{formatCount(item.forksCount)}</Text>
           <Text>Forks</Text>
         </View>
-        <View style={cardFooterStyles.actionTouchable}>
+        <View style={cardInfoStyles.actionTouchable}>
           <Text fontWeight="bold">{formatCount(item.reviewCount)}</Text>
           <Text>Reviews</Text>
         </View>
-        <View style={cardFooterStyles.actionTouchable}>
+        <View style={cardInfoStyles.actionTouchable}>
           <Text fontWeight="bold">{formatCount(item.ratingAverage)}</Text>
           <Text>Rating</Text>
         </View>
